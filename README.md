@@ -17,7 +17,7 @@ Exams can be vocabularies test to help student to memorize vocabularies.
 * Oauth2, Spring Security
 
 
-Extending service
+## Services and functionalities
 
 1/ Free vocabularies exams are free to attract users.
 2/ Free gramma and punctuation tutorials
@@ -25,5 +25,5 @@ Extending service
 4/ Mobile app charge $1.99
 5/ Online classes (private tutoring)
 
-
+## 
 
