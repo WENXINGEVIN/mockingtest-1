@@ -19,11 +19,10 @@ Exams can be vocabularies test to help student to memorize vocabularies.
 
 ## Services and functionalities
 
-1/ Free vocabularies exams are free to attract users.
-2/ Free gramma and punctuation tutorials
-3/ Make the pool of words and make cross word games. (marketing)
-4/ Mobile app charge $1.99
-5/ Online classes (private tutoring)
+* Free vocabularies exams are free to attract users.
+* Free gramma and punctuation tutorials
+* Make the pool of words and make cross word games. (marketing)
+* Mobile app charge $1.99
+* Online classes (private tutoring)
 
-## 
 
