@@ -1,0 +1,234 @@
+http://www.coderanch.com/t/282680/JSP/java/create-timer-jsp
+
+
+solution1: 
+
+<html><head>
+<script>
+<!--
+<%
+String clock = request.getParameter( "clock" );
+if( clock == null ) clock = "180";
+%>
+var timeout = <%=clock%>;
+function timer()
+{
+if( --timeout > 0 )
+{
+document.forma.clock.value = timeout;
+window.setTimeout( "timer()", 1000 );
+}
+else
+{
+document.forma.clock.value = "Time over";
+///disable submit-button etc
+}
+}
+//-->
+</script>
+<body>
+<form action="<%=request.getRequestURL()%>" name="forma">
+Seconds remaining: <input type="text" name="clock" value="<%=clock%>" style="border:0px solid white">
+...
+</form>
+<script>
+<!--
+timer();
+//-->
+</script>
+</body></html>
+
+
+Another one:
+
+<html><head>
+<%
+String mins = request.getParameter( "mins" );
+if( mins == null ) mins = "30";
+  
+String secs = request.getParameter( "secs" );
+if( secs == null ) secs = "1";
+%>
+<script>
+<!--
+var mins = <%=mins%>; // write mins to javascript
+var secs = <%=secs%>; // write secs to javascript
+function timer()
+{
+// tic tac
+if( --secs == -1 )
+{
+secs = 59;
+--mins;
+}
+ 
+// leading zero? formatting
+if( secs < 10 ) secs = "0" + secs;             
+if( mins < 10 ) mins = "0" + parseInt( mins, 10 );
+ 
+// display
+document.forma.mins.value = mins; 
+document.forma.secs.value = secs;
+ 
+// continue?
+if( secs == 0 && mins == 0 ) // time over
+{
+document.forma.ok.disabled = true;
+document.formb.results.style.display = "block";
+}
+else // call timer() recursively every 1000 ms == 1 sec
+{
+window.setTimeout( "timer()", 1000 );
+}
+}
+//-->
+</script></head>
+<body>
+<form action="<%=request.getRequestURL()%>" name="forma">
+Time remaining: <input type="text" name="mins" size="1" style="border:0px solid black;text-align:right">:<input type="text" name="secs" size="1" style="border:0px solid black">
+<hr>
+Question: What is green and turns red if you hit the button?<br>
+Answer: <input type="text" name="answer"> 
+<input type="submit" name="ok" value="OK"> 
+</form>
+<hr>
+<form action="#" name="formb">
+<input type="submit" name="results" value="show results" style="display:none;"> 
+</form>
+<script>
+<!--
+timer(); // call timer() after page is loaded
+//-->
+</script>
+</body></html>
+
+Solution 3:
+
+To me, this problem has a simple obvious solution. 
+You have to store the "end time" for this 'exam' in the session on the server end. 
+
+When the user hits the "start exam now" button, You get the current time, add 30 minutes (or whatever your time limit for the test is) and then store that value to a session attribute. 
+
+?
+1
+2
+3
+long now = System.currentTimeMillis();
+long examMustBeDoneBy = now + 30 * 60 * 1000;
+session.setAttribute("examMustBeDoneBy", new Date(examMustBeDoneBy));
+
+
+When the user submits the exam, you compare the current server time to their stored time limit value 
+?
+1
+2
+3
+4
+5
+6
+7
+8
+Date currentDate = new Date();
+Date examLimit = (Date)session.getAttribute("examMustBeDoneBy"));
+if (currentDate.before(examLimit)){
+  //mark the exam
+}
+else {
+  // you took too long.  you fail.
+}
+
+
+
+You will probably need a javascript countdown timer or similar on the JSP page. But this should be for visual reference on the client side only, and the server's time/limit should be the authoratitive one. Any time the page gets "reloaded" you work out the time remaining (based on the sesion attribute and current time) and set the javascript countdown timer appropriately. 
+
+The javascript timer should not get TOO far out of synch with the server. Particularly if the exam covers multiple pages, and the timer can keep getting synchronized with each request. 
+If they have javascript disabled on the page, then they don't get to see the useful countdown timer telling them how long they have to do the exam. 
+But that doesn't stop the clock. 
+
+tick...tick...tick.... 
+
+
+
+
+http://stackoverflow.com/questions/307964/countdown-timer-in-jsp-servlets
+
+solution:
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" session="false"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+
+<%
+HttpSession s=request.getSession(false);
+if(s==null) { %>
+<jsp:forward page="/Expired" />
+<% } %>
+
+s.setAttribute("duration", "2");
+
+
+<% String duration=(String)s.getAttribute("duration"); %>
+<% int a=Integer.parseInt(duration); %>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+var cmin=<%= a %>;
+var total=cmin*60;
+cmin=cmin-1;
+var ctr=0;
+var dom=document.getElementById("kulu");
+
+
+function ram() { 
+var dom=document.getElementById("kulu");
+dom.value=(cmin)+"minutes"+(total%60)+"seconds";
+<% String t=(String)s.getAttribute("over"); %>
+var tt=<%= t %>
+if(tt=="false"){ 
+	ram1();
+}
+
+total=total-1;
+ctr++;
+
+if(ctr==60) {
+	ctr=0;
+	cmin=cmin-1;
+}
+
+if (total==0) {
+	ram1();
+}
+
+	setTimeout("ram()", 1000);
+}
+
+function ram1(){
+	window.location.replace("/hcl/TTimeUp.jsp");
+}
+</script>
+
+</head>
+<body background="" onload="ram()">
+<form name="form1">
+<input type="text" id="kulu"/>
+</form>
+</html>
+
+Note: this solution seems to be working. Need to rewrite it and restructure using framework and OO, to make it suitable for multiple users.
+
+https://community.oracle.com/thread/1399882?start=0&tstart=0
+
+http://www.rmkwebdesign.com/Countdown_Timers/Samples.php
+https://www.experts-exchange.com/questions/20445945/need-timer-to-countdown-when-a-JSP-session-will-end.html
+
+http://stackoverflow.com/questions/121203/how-to-detect-if-javascript-is-disabled
+
+Modernizr
