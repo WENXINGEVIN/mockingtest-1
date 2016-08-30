@@ -21,6 +21,14 @@
   		<artifactId>spring-security-web</artifactId>
   		<version>4.1.2.RELEASE</version>
   	</dependency>
+  	
+  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-webmvc</artifactId>
+    	<version>4.3.1.RELEASE</version>
+	</dependency>
+  	
 
   	<dependency>
   		<groupId>org.hibernate</groupId>
