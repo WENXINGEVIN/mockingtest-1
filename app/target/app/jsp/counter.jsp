@@ -7,7 +7,7 @@
 HttpSession s=request.getSession(false);
 s.setAttribute("duration","1"); //30 secs
 String duration=(String)s.getAttribute("duration");
-//this is a bug
+//this is a bug, it does not support decimal number
 int a=Integer.parseInt(duration); %>
 
 <head>
@@ -15,38 +15,33 @@ int a=Integer.parseInt(duration); %>
 <title>Insert title here</title>
 
 <script type="text/javascript">
-var cmin=<%= a %>;
+var cmin=<%= a %>; //pass how many minutes from Java to javascript
 var total=cmin*60;
 cmin=cmin-1;
 var ctr=0;
 var dom=document.getElementById("kulu");
 
-
 function ram() { 
-var dom=document.getElementById("kulu");
-dom.value=(cmin)+"minutes"+(total%60)+"seconds";
-<% String t=(String)s.getAttribute("over"); %>
-var tt=<%= t %>
-if(tt=="false"){ 
-	ram1();
-}
-
-total=total-1;
-ctr++;
-
-if(ctr==60) {
-	ctr=0;
-	cmin=cmin-1;
-}
-
-if (total==0) {
-	ram1();
-}
-
+	var dom=document.getElementById("kulu");
+	dom.value=(cmin)+" minutes"+(total%60)+" seconds"; //display the value in the form text field
+	<% String t=(String)s.getAttribute("over"); %>
+	var tt=<%= t %>
+	if(tt=="false"){ 
+		ram1();
+	}
+	total=total-1;
+	ctr++;
+	if(ctr==60) {
+		ctr=0;
+		cmin=cmin-1;
+	}
+	if (total==0) {
+		redirect();
+	}
 	setTimeout("ram()", 1000);
 }
 
-function ram1(){
+function redirect(){
 	window.location.replace("timeout.jsp");
 	var dom =document.getElementById("kulu");
 	dom.value="0";
