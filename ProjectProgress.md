@@ -20,10 +20,19 @@
 
 ## Reference 
 
-Maven with diffferent properties file
+* Maven with diffferent properties file
 https://maven.apache.org/guides/mini/guide-building-for-different-environments.html
 
+* Flyway integration with Maven
 
+https://flywaydb.org/documentation/maven/migrate.html
+https://flywaydb.org/getstarted/firststeps/maven
+https://flywaydb.org/getstarted/firststeps/api
+http://chariotsolutions.com/blog/post/using-maven-to-integrate-flyway-in-an-existing-database-part-1/
+http://chariotsolutions.com/blog/post/using-maven-to-integrate-flyway-in-an-existing-database-part-2/
+http://blog.trifork.com/2014/12/09/integrating-flywaydb-in-a-spring-framework-application/
+http://stackoverflow.com/questions/28920131/configuration-for-maven-and-flyway-in-multiple-environments-plus-integration-te
+http://stackoverflow.com/questions/23545657/how-to-use-flyway-configuration-to-handle-multiple-databases
 
 
 
