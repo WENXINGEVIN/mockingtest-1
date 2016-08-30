@@ -136,12 +136,19 @@
 	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api 
 	  javax.servlet.http.*
 	  This is to remove all the jsp errors
-	-->
 	<dependency>
     	<groupId>org.apache.tomcat</groupId>
     	<artifactId>tomcat-servlet-api</artifactId>
     	<version>8.5.4</version>
 	</dependency>
+	-->
+	
+	<dependency>
+     	<groupId>jstl</groupId>
+     	<artifactId>jstl</artifactId>
+     	<version>1.2</version>
+     	<!-- <scope>provided</scope> -->
+ 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core 
 	   how to integrate this?
