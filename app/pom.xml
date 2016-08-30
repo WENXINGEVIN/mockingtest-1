@@ -7,14 +7,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>app Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    
      <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -22,15 +16,87 @@
       <scope>test</scope>
     </dependency>
     
-  
   	<dependency>
   		<groupId>org.springframework.security</groupId>
   		<artifactId>spring-security-web</artifactId>
   		<version>4.1.2.RELEASE</version>
   	</dependency>
 
-  </dependencies>
- 
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-maven-plugin</artifactId>
+  		<version>4.3.1.Final</version>
+  	</dependency>
+  	
+  	<!-- https://mvnrepository.com/artifact/io.repaint.maven/tiles-maven-plugin -->
+	<dependency>
+    <groupId>io.repaint.maven</groupId>
+    <artifactId>tiles-maven-plugin</artifactId>
+    <version>2.8</version>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+	<dependency>
+    	<groupId>commons-io</groupId>
+    	<artifactId>commons-io</artifactId>
+   		<version>2.5</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+	<dependency>
+    	<groupId>commons-logging</groupId>
+    	<artifactId>commons-logging</artifactId>
+    	<version>1.2</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+	<dependency>
+    	<groupId>commons-validator</groupId>
+    	<artifactId>commons-validator</artifactId>
+   	<version>1.5.1</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 
+		Apache Commons Object Pooling Library
+	-->
+	<dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-pool2</artifactId>
+    	<version>2.4.2</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email 
+		 Apache Commons Email aims to provide an API for sending email. 
+		 It is built on top of the JavaMail API, which it aims to simplify.
+	-->
+	<dependency>
+  	  	<groupId>org.apache.commons</groupId>
+   	 	<artifactId>commons-email</artifactId>
+   	 	<version>1.4</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>6.0.3</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+	<dependency>
+   	 	<groupId>org.slf4j</groupId>
+    	<artifactId>slf4j-api</artifactId>
+   		<version>1.7.21</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+    	<artifactId>jackson-databind</artifactId>
+    	<version>2.8.1</version>
+	</dependency>
+ </dependencies>
+  
   <build>
     <pluginManagement>
     <plugins>
@@ -53,9 +119,6 @@
       </plugin>
     </plugins>
     </pluginManagement>
-    
-     <finalName>app</finalName>
-    
-    
+    <finalName>app</finalName>
   </build>
 </project>
