@@ -28,3 +28,7 @@ Details can be checked in pom.xml
 * maven 3 up required
 * tomcat 8 required
 * Eclipse neon + Tomcat plugin (If you use other like intelli J it is ok, solution not supported here)
+
+# How to run the project
+
+In app/ directory, do a 'mvn clean package'. Then select index.jsp and "Run as" > Run on server, select tomcat8.  
