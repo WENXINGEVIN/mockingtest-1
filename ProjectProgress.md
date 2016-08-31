@@ -5,18 +5,23 @@
 * Project setup with Spring, Hibernate, Tiles, db drivers and other components dependencies using Maven system  (done)
 * Project setup instructions (done)
 * Basic controller, Spring security integration (done)
-* Spring with hibernate integration
-* Login/Logout filter (security)
-* Flyway DB integration with maven
-* Maven with property file
-* Oauth2
+* Flyway DB integration with maven (done)
+* Spring with hibernate integration (Sep 1st)
+* Spring with tiles integration (Sep 1st)
+* Login/Logout filter (security) (By Sep 2nd)
+* Maven with property file (By Sep 2nd)
+* Oauth2 (Research done By Sep 2nd)
 
-## Stage one checklist
+## Stage one
 * Frontend JS framework integration, research of webpack, react and Restful.
   Need to get the basic stuff from json to render in the frontend.
 * Oauth2 integration
 
 ## Stage three
+* Start rework on database design
+* Start UI desing
+* Start Frontpage design
+* Start on service design
 
 ## Reference 
 
