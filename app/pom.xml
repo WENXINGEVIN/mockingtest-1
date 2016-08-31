@@ -93,14 +93,7 @@
    	 	<version>1.4</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java 
-	   JDBC driver for mysql
-	-->
-	<dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql-connector-java</artifactId>
-    	<version>6.0.3</version>
-	</dependency>
+
 	
 	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 	<dependency>
@@ -133,17 +126,7 @@
         <scope>provided</scope>
     </dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api 
-	  javax.servlet.http.*
-	  This is to remove all the jsp errors
-	
-	<dependency>
-    	<groupId>org.apache.tomcat</groupId>
-    	<artifactId>tomcat-servlet-api</artifactId>
-    	<version>8.5.4</version>
-	</dependency>
-	
-	-->
+
 	
 	<dependency>
      	<groupId>jstl</groupId>
@@ -160,6 +143,17 @@
     	<artifactId>flyway-core</artifactId>
     	<version>4.0.3</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java 
+	   JDBC driver for mysql
+	-->
+	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>6.0.2</version> <!-- don't use 6.0.2 and 6.0.3 use 5.1.39 instead -->
+	    <scope>compile</scope> <!-- default scope or runtime scope will not work -->
+	</dependency>
+	
 </dependencies>
   
   <build>
@@ -181,6 +175,18 @@
                     </configuration>
               </execution>
             </executions>
+      </plugin>
+      
+      <plugin>
+      		<groupId>org.flywaydb</groupId>
+      		<artifactId>flyway-maven-plugin</artifactId>
+      		<version>4.0.3</version>
+      		<configuration>
+      			<url>jdbc:mysql://localhost:3306/flyway_schema</url>
+      			<user>root</user>
+      			<password>123456</password>
+      			<basedir>db/migrations</basedir>
+      		</configuration>
       </plugin>
     </plugins>
     </pluginManagement>

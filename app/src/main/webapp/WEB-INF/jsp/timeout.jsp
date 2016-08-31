@@ -7,7 +7,6 @@
 <title>Timeout</title>
 </head>
 <body>
-Thanks for attending our exam. You have finished the exam. Please
-revisit our system to schedule your text study plan.
+Thanks for attending our exam. You have finished the exam. Please revisit our system to schedule your text study plan.
 </body>
 </html>

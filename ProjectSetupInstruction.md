@@ -1,4 +1,4 @@
-# Project setup instruction
+# Project Setup Instruction
 
 # techdoc
 
@@ -29,6 +29,16 @@ Details can be checked in pom.xml
 * tomcat 8 required
 * Eclipse neon + Tomcat plugin (If you use other like intelli J it is ok, solution not supported here)
 
-# How to run the project
+# Useful commands
 
-In app/ directory, do a 'mvn clean package'. Then select index.jsp and "Run as" > Run on server, select tomcat8.  
+* Run the project 
+ In app/ directory, do a 
+ `mvn clean package`. Then select index.jsp and "Run as" > "Run on server", select tomcat8 to run the project. "mvn site" or "mvn deploy" is not configured yet. 
+
+* Database migration
+  `mvn flyway:migrate`
+  `mvn flyway:init`
+  `mvn flyway:status`
+  `mvn flyway:history`
+  
+* Maven debugging with -X flag
