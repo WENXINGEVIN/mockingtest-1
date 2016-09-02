@@ -25,9 +25,11 @@ Details can be checked in pom.xml
 # Developer machine setup
 
 * Java 8 required
-* maven 3 up required
+* maven 3 up required (brew install mvn)
 * tomcat 8 required
 * Eclipse neon + Tomcat plugin (If you use other like intelli J it is ok, solution not supported here)
+* nodeJS 5 (brew install -g node)
+* npm 3 (brew install -g npm@3)
 
 # Useful commands
 
@@ -35,10 +37,11 @@ Details can be checked in pom.xml
  In app/ directory, do a 
  `mvn clean package`. Then select index.jsp and "Run as" > "Run on server", select tomcat8 to run the project. "mvn site" or "mvn deploy" is not configured yet. 
 
-* Database migration
+* jetty is integrated so you don't need tomcat to run the project
+
+After you checout the project, try to do `mvn clean compile jetty:run`
+
+* Database migration (This part is not done)
   `mvn flyway:migrate`
-  `mvn flyway:init`
-  `mvn flyway:status`
-  `mvn flyway:history`
-  
+   
 * Maven debugging with -X flag
