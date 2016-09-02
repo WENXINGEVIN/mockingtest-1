@@ -1,19 +1,22 @@
 package com.webbertech.web.controller;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.webbertech.web.model.Contact;
 
 @Controller
 public class LandingPageController {
 
-
-	@RequestMapping(value = "/login**", method = RequestMethod.GET)
+   @RequestMapping({"/", "/index"})  
+	public ModelAndView index() {  
+	        ModelAndView mv = new ModelAndView("index");
+	        return mv;
+	}
+	
+   @RequestMapping(value = "/login**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security Hello World");
@@ -24,18 +27,17 @@ public class LandingPageController {
 	
     @RequestMapping("/services")  
     public ModelAndView helloWorld() {  
-        String message = "Hello World, Spring MVC @ Javatpoint";  
+        String message = "Services page";  
         ModelAndView mv = new ModelAndView();
         mv.addObject("message", message);
         mv.setViewName("services");
         return mv;
     }
     
-
 	@RequestMapping(value = {"/aboutus" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
+		model.addObject("title", "AboutUs page");
 		model.addObject("message", "This is welcome page!");
 		model.setViewName("aboutus");
 		return model;
@@ -51,6 +53,5 @@ public class LandingPageController {
     @RequestMapping("/contactus")  
     public ModelAndView showContacts() {  
         return new ModelAndView("contactus", "command", new Contact());  
-    } 
-	
+    }
 }
