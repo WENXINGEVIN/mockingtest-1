@@ -10,6 +10,6 @@
 <a href="index.jsp">Home</a> | 
 <a href="services.html">Services</a> |
 <a href="aboutus.html">About us</a> |  
-<a href="contact.html">Contact</a>
+<a href="contactus.html">Contact</a>
 </body>
 </html>

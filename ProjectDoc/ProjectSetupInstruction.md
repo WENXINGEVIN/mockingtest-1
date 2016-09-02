@@ -31,6 +31,10 @@ Details can be checked in pom.xml
 * nodeJS 5 (brew install -g node)
 * npm 3 (brew install -g npm@3)
 
+# Commits
+
+Please make sure that you do a `mvn clean` and do not commit anything in the target/ directory.
+
 # Useful commands
 
 * Run the project 
