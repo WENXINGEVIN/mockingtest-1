@@ -1,0 +1,207 @@
+﻿Web UI development Cheatsheet
+Version 0.1 
+Author: Xiaofeng Li
+
+Abstract: This document needs to provide a concise and simple tutorials to get on working on project quickly.
+
+Chapter 1
+JSON, NodeJS, NPM
+Chapter 2 RequireJS and UnderScoreJS 
+Chapter 3 Mastache
+
+
+Chapter 4 ReactJS
+
+4.1 What is ReactJS?
+
+UI library used by Facebook and Instagram.
+
+It's used for handling view layer for web and mobile apps. ReactJS allows us to create reusable UI components.  Lots of people use React as the V in MVC. React abstracts away the DOM from you, giving a simpler programming model and better performance. React can also render on the server using Node, and it can power native apps using React Native. 
+
+
+Virtual DOM
+
+Now think about if you took that object and made some changes. Added a mustache, some sweet biceps and Steve Buscemi eyes. In React-land, when we apply these changes, two things take place. First, React runs a “diffing” algorithm, which identifies what has changed. The second step is reconciliation, where it updates the DOM with the results of diff.
+Because React is using a fake DOM and not a real one, it also opens up a fun new possibility. We can render that fake DOM on the server, and boom, server side React views.
+React Features
+JSX − JSX is JavaScript syntax extension. It isn't necessary to use JSX in React development, but it is recommended.
+Components − React is all about components. You need to think of everything as a component. This will help you to maintain the code when working on larger scale projects.
+Unidirectional data flow and Flux − React implements one way data flow which makes it easy to reason about your app. Flux is a pattern that helps keeping your data unidirectional.
+
+Advantage
+It is not only perform in the client side but also is rendered in server side and inter-operable.
+It uses a concept called Virtual DOM that selectively renders the subtrees of nodes based upon state changes. It does the least amount of DOM manipulation possible.
+
+
+4.2 Handson example
+
+1/ Project setup
+
+mkdir myapp; 
+cd myapp
+npm init  (this will create a package.json, need to read on more on npm stuffs)
+
+npm install -g babel
+npm install -g babel-cli
+
+npm install webpack –save             (dependency info such as version will be written to package.json)
+npm install webpack-dev-server –save  (dependency info such as version will be written to package.json)
+
+npm install babel-core
+npm install babel-loader
+npm install babel-preset-react
+npm install babel-preset-es2015
+
+npm install react –save        (dependency info such as version will be written to package.json)
+npm install react-dom –save    (dependency info such as version will be written to package.json)
+
+2/ package.json
+Something to keep track of the dependency, this is very important. Let us take a look at it,
+
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "an inital test project",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaofengli/mockingtest.git"
+  },
+  "keywords": [
+    "mockingtest"
+  ],
+  "author": "xiaofeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaofengli/mockingtest/issues"
+  },
+  "homepage": "https://github.com/xiaofengli/mockingtest#readme"
+}
+
+ 
+
+
+3/ Create files
+
+C:\Users\username\Desktop\reactApp>touch index.html
+C:\Users\username\Desktop\reactApp>touch App.jsx
+C:\Users\username\Desktop\reactApp>touch main.js
+C:\Users\username\Desktop\reactApp>touch webpack.config.js
+
+Open webpack-config.js file and add the code below. We are setting webpack entry point to be main.js. Output path is the place where bundled app will be served. We are also setting development server to 8080 port. You can choose any port you want. And lastly, we are setting babel loaders to search for jsfiles and use es2015 and react presets that we installed before.
+
+webpack.config.js
+var config = {
+   entry: './main.js',
+        
+   output: {
+      path:'./',
+      filename: 'index.js',
+   },
+        
+   devServer: {
+      inline: true,
+      port: 8080
+   },
+        
+   module: {
+      loaders: [
+         {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel',
+                                
+            query: {
+               presets: ['es2015', 'react']
+            }
+         }
+      ]
+   }
+}
+
+module.exports = config;
+
+Open the package.json and delete "test" "echo \"Error: no test specified\" && exit 1" inside "scripts" object. We are deleting this line since we will not do any testing in this tutorials. Let's add the start command instead.
+"start": "webpack-dev-server --hot"
+Now we can use npm start command to start the server. --hotcommand will add live reload after something is changed inside our files so we don't need to refresh the browser every time we change our code.
+
+Index.html
+
+<!DOCTYPE html>
+<html lang = "en">
+
+   <head>
+      <meta charset = "UTF-8">
+      <title>React App</title>
+   </head>
+
+   <body>
+      <div id = "app"></div>
+      <script src = "index.js"></script>
+   </body>
+
+</html>
+
+App.jsx
+import React from 'react';
+
+class App extends React.Component {
+   render() {
+      return (
+         <div>
+            Hello World!!!
+         </div>
+      );
+   }
+}
+
+export default App;
+
+main.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(<App />, document.getElementById('app'));
+
+Output: Helloword!!!
+
+How to understand this code? So <app/> is implemented as a component in App.jsx. And the render should happen in the place of document.getElementById('app'). Main.js is the js scriplet, and it is translated to index.js which does not exists, but it is referenced in index.html as it is the magic js script where the magic should happen.
+
+
+ref:
+https://scotch.io/tutorials/learning-react-getting-started-and-concepts (not a good one)
+
+http://www.tutorialspoint.com/reactjs/
+
+https://www.codeschool.com/courses/powering-up-with-react/?utm_source=google&utm_medium=cpc&utm_term=react&utm_content=tutorial&utm_campaign=react-tutorial&gclid=Cj0KEQjw3ZS-BRD1xu3qw8uS2s4BEiQA2bcfM5UNtpUfusamfmPO4HLJYNc4fnThAGt7alg1FGQmMxUaAgEu8P8HAQ
+
+https://facebook.github.io/react/docs/tutorial.html
+
+https://github.com/reactjs/react-tutorial
+
+https://www.fullstackreact.com/articles/react-tutorial-cloning-yelp/
+
+
+
+https://tylermcginnis.com/react-js-tutorial-pt-1-a-comprehensive-guide-to-building-apps-with-react-js-8ce321b125ba#.89zjbuowm
+
+http://buildwithreact.com/
+
+http://andrewhfarmer.com/getting-started-tutorials/
+
+https://www.meteor.com/tutorials/react/creating-an-app
+
+
+
+Chapter 5 BackboneJS
