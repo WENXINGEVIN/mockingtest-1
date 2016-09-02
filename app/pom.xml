@@ -176,7 +176,6 @@
               </execution>
             </executions>
       </plugin>
-      
       <plugin>
       		<groupId>org.flywaydb</groupId>
       		<artifactId>flyway-maven-plugin</artifactId>
@@ -187,6 +186,22 @@
       			<password>123456</password>
       			<basedir>db/migrations</basedir>
       		</configuration>
+      </plugin>
+
+      <plugin>
+  		<groupId>org.eclipse.jetty</groupId>
+  		<artifactId>jetty-maven-plugin</artifactId>
+  		<version>9.3.0.v20150612</version>
+                <configuration>
+                    <!-- check for changes in every 10 secs when server starts   -->
+                    <scanIntervalSeconds>10</scanIntervalSeconds> 
+                     
+                    <!-- mvn jetty:run-war -->
+                    <war>${project.basedir}/target/app.war</war>
+                    
+                    <!-- Need to do more research on https and port config -->
+                    <jettyXml></jettyXml>
+                </configuration>
       </plugin>
     </plugins>
     </pluginManagement>
