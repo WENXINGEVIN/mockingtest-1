@@ -8,7 +8,10 @@ different version of mysql-connector drivers.
 
 ## Current solution for flyway migration
 
-Use the following commands,
+* Install the flyway in local development computer, and in the flyway*/conf/flyway.conf,
+configure all the url, user, password...etc. 
+
+* Use the following commands,
 
 In mysql command line or mysql workbench, use the following,
 
@@ -17,9 +20,9 @@ In mysql command line or mysql workbench, use the following,
 Then do the following in bash,
 
 ```
-xiaofengmaclap:mockingtest xiaofeng$ flyway -locations=filesystem:/Users/xiaofeng/cloud/mockingtest/app/src/main/resources/db/migration/words/ clean'
+flyway -locations=filesystem:/Users/xiaofeng/cloud/mockingtest/app/src/main/resources/db/migration/words/ clean'
 
-xiaofengmaclap:mockingtest xiaofeng$ flyway -locations=filesystem:/Users/xiaofeng/cloud/mockingtest/app/src/main/resources/db/migration/words/ migrate'
+flyway -locations=filesystem:/Users/xiaofeng/cloud/mockingtest/app/src/main/resources/db/migration/words/ migrate'
 
 ```
 
