@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="index.jsp">Home</a> | 
+<a href="index.html">Home</a> | 
 <a href="services.html">Services</a> |
 <a href="aboutus.html">About us</a> |  
 <a href="contactus.html">Contact</a>
