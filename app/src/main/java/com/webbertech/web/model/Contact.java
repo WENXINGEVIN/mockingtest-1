@@ -1,9 +1,23 @@
 package com.webbertech.web.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Contact {  
+	@Id
+	private String id;
     private String firstname;  
     private String lastname;  
     private String email;  
     private String telephone;
+    
+    public String getId() {
+    	return id;
+    }
+    public void setId(String id) {
+    	this.id=id;
+    }
 	public String getFirstname() {
 		return firstname;
 	}
