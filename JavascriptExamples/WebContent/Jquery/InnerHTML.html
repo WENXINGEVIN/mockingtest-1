@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery With Example</title>
+  <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#btnClick").click(function () {
+    	var content = document.getElementById("Container");
+        alert("HTML: " + content.innerHTML);
+        content.innerHTML = "hello world";
+      });
+      
+      
+        the following div p1 is clickable using jquery. You can uncomment this to try,.
+      $("#p1").click( function() {
+    	 	alert("hello I am clicking");
+      });
+      
+      
+      /* The following eay is not working
+      document.getElementById("p1").onclick( function() {
+    	  alert("hello I am clicking");
+      }*/
+       
+      );
+    
+    });
+  
+  
+  </script>
+</head>
+<body>
+  <div id="p1">This example shows you to use another way of using $(document.ready()) <br/>
+       It also shows you how to mix jquery selector and vanilla js selector.<br/>
+       This example also shows how to do the query event and dom event in vanilla js.
+  </div>
+  <div id="Container">
+    <b>Country</b>
+    <input type="text" id="txtCountry" value="India" />
+  </div>
+  <button id="btnClick">Click</button>
+</body>
+</html>

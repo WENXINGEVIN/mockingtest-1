@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+ $(document).ready(function() {
+	/* enable this and disable keyup event example to test it
+	 $("input").keydown( function myFunction() {
+		    alert("You pressed a key inside the input field");
+		}
+	 );
+	 */
+	 $("input").keyup( function myFunction() {
+		    alert("keyup event is fired");
+		}
+	 );
+	 
+	 $("input").focus(function(){
+		    $(this).css("background-color", "#cccccc");
+		});
+	 
+	 
+	 $("input").blur(function(){
+		    $(this).css("background-color", "#ffffff");
+		    alert("good bye");
+		});
+    }
+ );
+</script>
+</head>
+<body>
+<div> This example shows you the keydown event, focus event and blur event, $("input") input here means the input html tag. 
+</div>
+<input type="text" onkeydown="myFunction()">
+
+</body>
+</html>

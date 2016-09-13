@@ -138,8 +138,6 @@
         <scope>provided</scope>
     </dependency>
 	
-
-	
 	<dependency>
      	<groupId>jstl</groupId>
      	<artifactId>jstl</artifactId>
@@ -162,7 +160,7 @@
 	<dependency>
     	<groupId>mysql</groupId>
     	<artifactId>mysql-connector-java</artifactId>
-    	<version>6.0.2</version> <!-- don't use 6.0.2 and 6.0.3 use 5.1.39 instead -->
+    	<version>6.0.3</version> <!-- don't use 6.0.2 and 6.0.3 use 5.1.39 instead -->
 	    <scope>compile</scope> <!-- default scope or runtime scope will not work -->
 	</dependency>
 	
@@ -193,10 +191,13 @@
       		<artifactId>flyway-maven-plugin</artifactId>
       		<version>4.0.3</version>
       		<configuration>
-      			<url>jdbc:mysql://localhost:3306/flyway_schema</url>
+                        <url>jdbc:mysql://localhost:3306</url>
       			<user>root</user>
       			<password>123456</password>
-      			<basedir>db/migrations</basedir>
+      			<basedir>db/migrations/words</basedir>
+                        <schemas>
+                           <schema>flyway_schema</schema>
+                        </schemas>
       		</configuration>
       </plugin>
 
