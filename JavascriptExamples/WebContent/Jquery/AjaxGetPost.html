@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+    	
+        $.get("http://www.w3schools.com/demo_test.asp", function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+
+$(document).ready(function(){
+    $("#btn2").click(function(){
+        $.post("http://www.w3schools.com/demo_test_post.asp",
+        {
+          name: "Donald Duck",
+          city: "Duckburg"
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+
+</script>
+</head>
+<body>
+
+<div>
+<pre>
+$.get(URL,callback)
+The required URL parameter specifies the URL you wish to request.
+The optional callback parameter is the name of a function to be 
+executed if the request succeeds. Post is to send data to be processed. 
+Post can also be used to get data but it is not being cached.
+
+$.post(URL,data,callback)
+
+data is also optional here.
+callback is executed when the request succeeds.
+</pre>
+</div>
+<button id="btn1">Send an HTTP GET request to a page and get the result back</button>
+<button id="btn2">Send an HTTP POST request to a page and get the result back</button>
+</body>
+</html>

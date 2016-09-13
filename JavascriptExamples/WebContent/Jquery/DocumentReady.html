@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<script>
+ $(document).ready(function() {
+    		 $("button:first").click(function() {
+    			 $("p").hide();
+    			 $("#test").hide();
+    		 });
+    		 
+    		 $("#myBtn").dblclick( function() {
+    			 $(".test").text("changed to this"); 
+    		  }
+    				 );
+     	}
+    );
+</script>
+
+<p>test me </p>
+<div id="test">will disappear </div>
+<div class="test">content will disappear after double click</div>
+<button type="button" id="firstBtn" >Click Me!</button>
+<button type="button" id = "myBtn">Double click testing</button>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        <!--$("#div1").load("ajax_data.txt");-->
+        $("#div1").load("ajax_data.txt #p1");
+    });
+});
+</script>
+</head>
+<body>
+<div>
+<pre>
+jQuery provides several methods for AJAX functionality.
+
+With the jQuery AJAX methods, you can request text, HTML, 
+XML, or JSON from a remote server using both HTTP Get and HTTP Post - And 
+you can load the external data directly into the selected HTML elements of
+your web page!
+
+Writing regular AJAX code can be a bit tricky, because different browsers 
+have different syntax for AJAX implementation. This means that you will have
+to write extra code to test for different browsers. However, the jQuery team 
+has taken care of this for us, so that we can write AJAX functionality with 
+only one single line of code.
+</pre>
+</div>
+
+<div id="div1"> <pre>
+jQuery load() Method
+The jQuery load() method is a simple, but powerful AJAX method.
+
+The load() method loads data from a server and puts the returned data into the selected element.
+
+Syntax:
+
+$(selector).load(URL,data,callback);
+
+URL is required.
+data is optional.
+callback is optional and it is executed when the load is completed.
+</pre>
+</div>
+<button >click me</button>
+</body>
+</html>

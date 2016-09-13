@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+ $(document).ready(function() {
+    	$("#p1").mouseenter(function(){
+  			alert("You entered p1!");
+		});
+
+		$("#p1").mouseleave(function(){
+  			alert("Bye! You now leave p1!");
+		}); 
+
+		$("#p1").mousedown(function(){
+  			alert("Mouse down over p1!");
+		});
+
+		$("#p1").mouseup(function(){
+  			alert("Mouse up over p1!");
+		});
+		$("#p1").hover(function(){
+  			alert("You are hovering on p1!");
+  		    },
+  			function(){
+  				alert("Bye! You now leave p1!");
+		    }
+	    ); 
+
+   }
+    );
+</script>
+</head>
+<body>
+
+<p id="p1" style="background-color:yellow">test me </p>
+
+</body>
+</html>
