@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>In HTML the value of <b>this</b>, in a global function, is the window object.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    return this;
+}
+document.getElementById("demo").innerHTML = myFunction();
+</script>
+
+</body>
+</html>
