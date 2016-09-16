@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+
+<button id="myBtn">click me</button>
+
+<script>
+
+
+var x = document.getElementById("myBtn");
+if (x.addEventListener) {                    // For all major browsers, except IE 8 and earlier
+    x.addEventListener("click", myFunction);
+} else if (x.attachEvent) {                  // For IE 8 and earlier versions
+    x.attachEvent("onclick", myFunction);
+}
+
+function myFunction() {
+	alert("this is working");
+}
+</script>
+
+
+
+
+</body>
+</html>
