@@ -43,4 +43,14 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" />
 	</definition>
 	
+	<definition name="accessDenied" extends="base.definition">
+		<put-attribute name="title" value="Hello Spring" />
+		<put-attribute name="body" value="/WEB-INF/jsp/accessDenied.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="base.definition">
+		<put-attribute name="title" value="Hello Spring" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin.jsp" />
+	</definition>
+	
 </tiles-definitions>
