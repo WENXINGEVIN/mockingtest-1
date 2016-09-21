@@ -1,5 +1,12 @@
 package com.webbertech.web.controller;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +31,12 @@ public class LandingPageController {
 		model.setViewName("login");
 		return model;
 	}
+   
+   @RequestMapping(value = "/admin", method = RequestMethod.GET)
+   public String adminPage(ModelMap model) {
+       model.addAttribute("user", getPrincipal());
+       return "admin";
+   }
 	
     @RequestMapping("/services")  
     public ModelAndView helloWorld() {  
@@ -53,5 +66,36 @@ public class LandingPageController {
     @RequestMapping("/contactus")  
     public ModelAndView showContacts() {  
         return new ModelAndView("contactus", "command", new Contact());  
+    }
+    
+    @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
+    public String accessDeniedPage(ModelMap model) {
+        model.addAttribute("user", getPrincipal());
+        return "accessDenied";
+    }
+    
+    /**
+     * This is not working yet.
+     * @return
+     */
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+       if (auth != null){    
+          new SecurityContextLogoutHandler().logout(request, response, auth);
+       }
+       return "admin";
+    }
+    
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+ 
+        /*if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {*/
+            userName = principal.toString();
+       // }
+        return userName;
     }
 }
