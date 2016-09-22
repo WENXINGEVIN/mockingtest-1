@@ -7,10 +7,11 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+   <!--  
+
 	<context:component-scan base-package="com.webbertech.*" />
 
-   <!-- multiple view resolver's priority does not work for the following two -->
-   <!--  
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -23,6 +24,7 @@
 	</bean>
     -->
 	
+	<!--  
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass">
@@ -30,7 +32,7 @@
 				org.springframework.web.servlet.view.tiles3.TilesView
 			</value>
 		</property>
-		<!--   <property name="order" value="1" /> -->
+	
 	</bean>
 	
 	<bean id="tilesConfigurer"
@@ -41,5 +43,5 @@
 			</list>
 		</property>
 	</bean>
-
+    -->
 </beans>
