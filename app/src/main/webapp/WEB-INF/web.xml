@@ -19,7 +19,8 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/WEB-INF/spring-datasource.xml
+			<!--  use java config instead
+			 /WEB-INF/spring-datasource.xml -->
 		</param-value>
 	</context-param>
 
