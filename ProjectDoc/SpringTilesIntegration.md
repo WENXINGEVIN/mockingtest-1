@@ -2,13 +2,12 @@
 
 ## Configuration
 
-It is configured in mvc-dispatcher-servlet.xml.
-This is an integration of spring4.x and tiles3.x.
+This is an integration of spring4.x and tiles3.x with Java configuration.
+For detail please checkout AppConfig.java.
 
-## TODO
-
-more advanced usage of tiles will be added later
 
 ## Reference
 
 * http://www.codingpedia.org/ama/spring-mvc-and-apache-tiles-integration-example/
+
+* http://websystique.com/springmvc/spring-4-mvc-apache-tiles-3-annotation-based-example/
