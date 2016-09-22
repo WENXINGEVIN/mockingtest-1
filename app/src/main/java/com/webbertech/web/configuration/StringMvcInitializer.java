@@ -1,4 +1,4 @@
-package com.webbertech.web.security;
+package com.webbertech.web.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
