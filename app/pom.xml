@@ -182,6 +182,19 @@
 	    <scope>compile</scope> <!-- default scope or runtime scope will not work -->
 	</dependency>
 	
+	 <!-- Joda-Time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+ 
+        <!-- To map JodaTime with database type -->
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>3.0.0.CR1</version>
+        </dependency>
 </dependencies>
   
   <build>
@@ -204,6 +217,7 @@
               </execution>
             </executions>
       </plugin>
+      
       <plugin>
       		<groupId>org.flywaydb</groupId>
       		<artifactId>flyway-maven-plugin</artifactId>
