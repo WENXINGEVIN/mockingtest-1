@@ -1,32 +1,29 @@
 Versions: check pom.xml for details.
 
 Existing problems of the websystique example, 
-Some different minor version of spring used in the following examples has inconsistency. Thus, we will see 
-some errors when we integrate different components.
+Some different minor version of spring used in the following examples has inconsistency. 
+Thus, we will see some errors when we integrate different components.
 
 Resources are coming form the following URL:
 
 0/ http://websystique.com/springmvc/spring-4-mvc-and-hibernate4-integration-example-using-annotations/
-
 The above is done 
 
 1/ Tiles integration 
 http://websystique.com/springmvc/spring-4-mvc-apache-tiles-3-annotation-based-example/
-
 The above is done
-
 
 4/ Maven + Tomcat 
 http://www.mkyong.com/maven/how-to-deploy-maven-based-war-file-to-tomcat/
 
 Done research, installed tomcat8 + tomcat plugin and it seems working fine. 
-TODO: Need to write a maven task to copy war
-to a directory.
+TODO: Need to write a maven task to copy war to a directory.
 
-5/ Spring + Hibernate 4 update configuration. No xml needed, Java configuration.
+5/ Spring security (xiaofeng)
 http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/
 http://websystique.com/spring-security/spring-security-4-hibernate-annotation-example/
-
-6/ understand security stuff
 http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
 
+7/ Fix employee add and edit...etc. (Xin)
+
+8/ Oauth2 integration, Email integration
