@@ -1,5 +1,7 @@
 package com.webbertech.web.configuration;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +14,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
- 
+
+/*Note this file mvc stuff for view resolver, and tiles*/
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.webbertech.web")
@@ -27,6 +31,15 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
  
+	
+	 @Bean
+	    public MessageSource messageSource() {
+	        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+	        messageSource.setBasename("messages");
+	        return messageSource;
+    }
+	 
+	
 	  /**
      * Configure TilesConfigurer.
      */

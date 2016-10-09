@@ -41,7 +41,7 @@ public class EmployeeController {
 		service.saveEmployee(e1);
 		
 		Employee e2 = new Employee();
-		e2.setId(147);
+		e2.setId(148);
 		e2.setFirstName("xiaofeng");
 		e2.setLastName("li");
 		e2.setJoiningDate(new LocalDate(2012,11,11));

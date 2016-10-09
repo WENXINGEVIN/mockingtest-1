@@ -13,6 +13,7 @@ import org.hibernate.annotations.Type;
 @Table(name = "employee")
 public class Employee {
     @Id 
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
     
@@ -32,14 +33,7 @@ public class Employee {
     @Column(name = "ssn", unique=true, nullable = false)
     private String ssn;
     
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        result = prime * result + ((ssn == null) ? 0 : ssn.hashCode());
-        return result;
-    }
+
  
     public int getId() {
 		return id;
@@ -89,7 +83,17 @@ public class Employee {
 		this.ssn = ssn;
 	}
 
-	@Override
+	
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        result = prime * result + ((ssn == null) ? 0 : ssn.hashCode());
+        return result;
+    }
+    
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

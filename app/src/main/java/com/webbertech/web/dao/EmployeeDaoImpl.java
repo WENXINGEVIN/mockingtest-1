@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.webbertech.web.model.Employee;
 
 @Repository("employeeDao")
-public class EmployeeDaoImpl extends AbstractDao implements EmployeeDao {
+public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements EmployeeDao {
 
 	public void saveEmployee(Employee employee) {
 		persist(employee);
@@ -26,7 +26,7 @@ public class EmployeeDaoImpl extends AbstractDao implements EmployeeDao {
 		query.executeUpdate();
 	}
 
-	public Employee findBySsn(String ssn) {
+	public Employee findEmployeeBySsn(String ssn) {
 		Criteria criteria = getSession().createCriteria(Employee.class);
 		criteria.add(Restrictions.eq("ssn", ssn));
 		return (Employee) criteria.uniqueResult();
@@ -35,4 +35,11 @@ public class EmployeeDaoImpl extends AbstractDao implements EmployeeDao {
 	public void updateEmployee(Employee employee) {
 		getSession().update(employee);
 	}
+
+	public Employee findEmployeeById(int id) {
+		Criteria criteria = getSession().createCriteria(Employee.class);
+		criteria.add(Restrictions.eq("id", id));
+		return (Employee) criteria.uniqueResult();
+	}
+	
 }
