@@ -26,21 +26,21 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/");
+        viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
  
 	
-	 @Bean
-	    public MessageSource messageSource() {
+	@Bean
+	public MessageSource messageSource() {
 	        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 	        messageSource.setBasename("messages");
 	        return messageSource;
     }
 	 
 	
-	  /**
+	/**
      * Configure TilesConfigurer.
      */
     @Bean
@@ -63,10 +63,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     /**
      * Configure ResourceHandlers to serve static resources like CSS/ Javascript etc...
      */
-     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-    }
-	
+    }	
 }
