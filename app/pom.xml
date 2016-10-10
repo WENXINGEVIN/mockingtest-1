@@ -17,6 +17,9 @@
 		<mockito.version>1.10.19</mockito.version>
 		<h2.version>1.4.187</h2.version>
 		<dbunit.version>2.2</dbunit.version>
+		<project.resources.deploy.folder>
+			/Users/xiaofeng007/apache-tomcat-8.5.5/webapps
+		</project.resources.deploy.folder>
 	</properties>
 
 	<dependencies>
