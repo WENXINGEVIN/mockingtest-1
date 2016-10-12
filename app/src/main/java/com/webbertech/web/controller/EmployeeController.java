@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.webbertech.web.configuration.AppConfig;
-import com.webbertech.web.dao.EmployeeDao;
+import com.webbertech.web.employee.dao.EmployeeDao;
 import com.webbertech.web.model.Employee;
 import com.webbertech.web.service.EmployeeService;
 import org.joda.time.LocalDate;

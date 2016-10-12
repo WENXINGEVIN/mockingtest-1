@@ -4,7 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.webbertech.web.dao.EmployeeDao;
+
+import com.webbertech.web.employee.dao.EmployeeDao;
 import com.webbertech.web.model.Employee;
 
 @Service("employeeService")

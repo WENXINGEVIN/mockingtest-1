@@ -1,4 +1,4 @@
-package com.webbertech.web.dao;
+package com.webbertech.web.employee.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
