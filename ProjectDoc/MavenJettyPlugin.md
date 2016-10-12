@@ -1,5 +1,7 @@
 # Maven Integration with Jetty
 
+This document is used for deploying your project to servlet container jetty and test out your project in your browser.
+
 ## Jetty Maven Plugin
 
 Required maven 3 and Java 7 up
