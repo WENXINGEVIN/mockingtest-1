@@ -9,8 +9,9 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<springframework.version>4.1.2.RELEASE</springframework.version>
-		<hibernate.version>4.3.6.Final</hibernate.version>
+		<springframework.version>4.2.5.RELEASE</springframework.version>
+		<springsecurity.version>4.0.4.RELEASE</springsecurity.version>
+		<hibernate.version>4.3.11.Final</hibernate.version>
 		<mysql.connector.version>5.1.31</mysql.connector.version>
 		<joda-time.version>2.3</joda-time.version>
 		<testng.version>6.9.4</testng.version>
@@ -54,20 +55,26 @@
 			<artifactId>spring-context</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
+		
+		<!-- Spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>${springframework.version}</version>
+			<version>${springsecurity.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config 
-			this is needed to resolve configuration issue -->
-		<dependency>
+        <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>${springframework.version}</version>
+			<version>${springsecurity.version}</version>
 		</dependency>
-
+		
+ 		<dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -75,17 +82,6 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- jsr303 validation -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.1.3.Final</version>
-		</dependency>
 
 		<!-- jsr303 validation -->
 		<dependency>
@@ -100,13 +96,7 @@
 			<version>5.1.3.Final</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-maven-plugin</artifactId>
-			<version>4.3.1.Final</version>
-		</dependency>
-		<!-- End of Hibernate Libraries -->
-
+		<!-- TEST -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -114,14 +104,9 @@
 			<scope>test</scope>
 		</dependency>
 
+		
 
-		<!-- Apache libs -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>2.1.1</version>
-		</dependency>
-
+        <!-- TILES -->
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -129,84 +114,108 @@
 			<version>3.0.7</version>
 		</dependency>
 
-
+        <!-- Apache libs -->
+		<!-- 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		-->
+		
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<!--
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
 		</dependency>
+		-->
 
 		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<!--
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+        -->
+        
 		<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+		<!--
 		<dependency>
 			<groupId>commons-validator</groupId>
 			<artifactId>commons-validator</artifactId>
 			<version>1.5.1</version>
 		</dependency>
-
+        -->
+         
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 
 			Apache Commons Object Pooling Library -->
+		<!--
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
 			<version>2.4.2</version>
 		</dependency>
-
+        -->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email 
 			Apache Commons Email aims to provide an API for sending email. It is built 
 			on top of the JavaMail API, which it aims to simplify. -->
+		<!--
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
 			<version>1.4</version>
 		</dependency>
-
+        -->
+        
 		<!-- End of Apache libs -->
-
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<!--  
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.21</version>
 		</dependency>
-
+        -->
+        
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind 
 			Java object to json serialization -->
+		<!--  
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.8.1</version>
 		</dependency>
-
-		<!-- Servlet Resolve JSP errors -->
+        -->
+        
+        <!-- SLF4J/Logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+        
+		<!-- Servlet+JSP+JSTL -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+     	<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 			<!-- <scope>provided</scope> -->
 		</dependency>
 
+        <!-- Flyway used for  db migration-->
 		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core how to 
 			integrate this? -->
 		<dependency>
@@ -215,6 +224,7 @@
 			<version>4.0.3</version>
 		</dependency>
 
+    
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java JDBC 
 			driver for mysql -->
 		<dependency>
