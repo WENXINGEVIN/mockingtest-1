@@ -1,29 +1,18 @@
 package com.webbertech.web.dao;
 
-import org.springframework.orm.hibernate4.HibernateTemplate;
-import org.springframework.transaction.annotation.Transactional;
 import com.webbertech.web.model.Employee;
+import java.util.List;
 
-public class EmployeeDao {
-	HibernateTemplate template;
+public interface EmployeeDao {
 
-	public void setTemplate(HibernateTemplate template) {
-		this.template = template;
-		template.setCheckWriteOperations(false);
-	}
+	void saveEmployee(Employee employee);
 
-	@Transactional(readOnly = false)
-	public void saveEmployee(Employee e) {
-		template.save(e);
-	}
+	List<Employee> findAllEmployees();
 
-	@Transactional(readOnly = false)
-	public void updateEmployee(Employee e) {
-		template.update(e);
-	}
+	void deleteEmployeeBySsn(String ssn);
 
-	@Transactional(readOnly = false)
-	public void deleteEmployee(Employee e) {
-		template.delete(e);
-	}
+	Employee findEmployeeById(int id);
+	Employee findEmployeeBySsn(String ssn);
+
+	void updateEmployee(Employee employee);
 }

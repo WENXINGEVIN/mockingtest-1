@@ -1,241 +1,309 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.mockingtest</groupId>
-  <artifactId>app</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>app Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  
-  <dependencies>
-  	<dependency>
-    	<groupId>org.hibernate</groupId>
-    	<artifactId>hibernate-core</artifactId>
-   		 <version>4.3.11.Final</version>
-	</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mockingtest</groupId>
+	<artifactId>app</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>app Maven Webapp</name>
+	<url>http://maven.apache.org</url>
 
-	<dependency>
-    	<groupId>org.springframework</groupId>
-   		 <artifactId>spring-orm</artifactId>
-   		 <version>4.3.2.RELEASE</version>
-	</dependency>
+	<properties>
+		<springframework.version>4.1.2.RELEASE</springframework.version>
+		<hibernate.version>4.3.6.Final</hibernate.version>
+		<mysql.connector.version>5.1.31</mysql.connector.version>
+		<joda-time.version>2.3</joda-time.version>
+		<testng.version>6.9.4</testng.version>
+		<mockito.version>1.10.19</mockito.version>
+		<h2.version>1.4.187</h2.version>
+		<dbunit.version>2.2</dbunit.version>
+		<project.resources.deploy.folder>
+			/Users/xiaofeng007/apache-tomcat-8.5.5/webapps
+		</project.resources.deploy.folder>
+	</properties>
 
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-dbcp2</artifactId>
-    <version>2.1.1</version>
-</dependency>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
 
-     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    
-  	<dependency>
-  		<groupId>org.springframework.security</groupId>
-  		<artifactId>spring-security-web</artifactId>
-  		<version>4.1.2.RELEASE</version>
-  	</dependency>
-  	
-  	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config 
-	   this is needed to resolve configuration issue
-	-->
-	<dependency>
-    	<groupId>org.springframework.security</groupId>
-    	<artifactId>spring-security-config</artifactId>
-    	<version>4.1.3.RELEASE</version>
-	</dependency>
-	
-  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc 
-  	  somehow this is missing from the dependent spring core jars of spring-security-web
-  	-->
-	<dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-webmvc</artifactId>
-    	<version>4.3.1.RELEASE</version>
-	</dependency>
-  	
-  	<dependency>
-  		<groupId>org.hibernate</groupId>
-  		<artifactId>hibernate-maven-plugin</artifactId>
-  		<version>4.3.1.Final</version>
-  	</dependency>
-  	
-  	<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
-	<!-- not sure this is necessary 
-	<dependency>
-    	<groupId>org.apache.tiles</groupId>
-    	<artifactId>tiles-core</artifactId>
-    	<version>3.0.7</version>
-	</dependency>
-    -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config 
+			this is needed to resolve configuration issue -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
- 
-	<dependency>
-    	<groupId>org.apache.tiles</groupId>
-    	<artifactId>tiles-jsp</artifactId>
-    	<version>3.0.7</version>
-	</dependency>
-   
-    
-    <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-	<dependency>
-    	<groupId>commons-io</groupId>
-    	<artifactId>commons-io</artifactId>
-   		<version>2.5</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-	<dependency>
-    	<groupId>commons-logging</groupId>
-    	<artifactId>commons-logging</artifactId>
-    	<version>1.2</version>
-	</dependency>
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
-	<dependency>
-    	<groupId>commons-validator</groupId>
-    	<artifactId>commons-validator</artifactId>
-   		<version>1.5.1</version>
-	</dependency>
+		<!-- jsr303 validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.3.Final</version>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 
-		Apache Commons Object Pooling Library
-	-->
-	<dependency>
-    	<groupId>org.apache.commons</groupId>
-    	<artifactId>commons-pool2</artifactId>
-    	<version>2.4.2</version>
-	</dependency>
+		<!-- jsr303 validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email 
-		 Apache Commons Email aims to provide an API for sending email. 
-		 It is built on top of the JavaMail API, which it aims to simplify.
-	-->
-	<dependency>
-  	  	<groupId>org.apache.commons</groupId>
-   	 	<artifactId>commons-email</artifactId>
-   	 	<version>1.4</version>
-	</dependency>
-	
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.3.Final</version>
+		</dependency>
 
-	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-	<dependency>
-   	 	<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-api</artifactId>
-   		<version>1.7.21</version>
-	</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-maven-plugin</artifactId>
+			<version>4.3.1.Final</version>
+		</dependency>
+		<!-- End of Hibernate Libraries -->
 
-	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind 
-	   Java object to json serialization
-	-->
-	<dependency>
-    	<groupId>com.fasterxml.jackson.core</groupId>
-    	<artifactId>jackson-databind</artifactId>
-    	<version>2.8.1</version>
-	</dependency>
-	
-	<!-- Servlet Resolve JSP errors-->
-	<dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>servlet-api</artifactId>
-        <version>2.5</version>
-        <scope>provided</scope>
-    </dependency>
-    
-    <dependency>
-        <groupId>javax.servlet.jsp</groupId>
-        <artifactId>jsp-api</artifactId>
-        <version>2.1</version>
-        <scope>provided</scope>
-    </dependency>
-	
-	<dependency>
-     	<groupId>jstl</groupId>
-     	<artifactId>jstl</artifactId>
-     	<version>1.2</version>
-     	<!-- <scope>provided</scope> -->
- 	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core 
-	   how to integrate this?
-	-->
-	<dependency>
-    	<groupId>org.flywaydb</groupId>
-    	<artifactId>flyway-core</artifactId>
-    	<version>4.0.3</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java 
-	   JDBC driver for mysql
-	-->
-	<dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql-connector-java</artifactId>
-    	<version>5.1.28</version> <!-- don't use 6.0.2 and 6.0.3 use 5.1.39 instead -->
-	    <scope>compile</scope> <!-- default scope or runtime scope will not work -->
-	</dependency>
-	
-</dependencies>
-  
-  <build>
-    <pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-            <version>2.8</version>
-            <executions>
-              <execution>
-                <id>download-dependencies</id>
-                  <phase>generate-resources</phase>
-                    <goals>
-                      <goal>copy-dependencies</goal>
-                    </goals>
-                    <configuration>
-                      <outputDirectory> ${project.build.directory}/dependencies </outputDirectory>
-                    </configuration>
-              </execution>
-            </executions>
-      </plugin>
-      <plugin>
-      		<groupId>org.flywaydb</groupId>
-      		<artifactId>flyway-maven-plugin</artifactId>
-      		<version>4.0.3</version>
-      		<configuration>
-                        <url>jdbc:mysql://localhost:3306</url>
-      			<user>root</user>
-      			<password>123456</password>
-      			<basedir>db/migrations/words</basedir>
-                        <schemas>
-                           <schema>flyway_schema</schema>
-                        </schemas>
-      		</configuration>
-      </plugin>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
 
-      <plugin>
-  		<groupId>org.eclipse.jetty</groupId>
-  		<artifactId>jetty-maven-plugin</artifactId>
-  		<version>9.3.0.v20150612</version>
-                <configuration>
-                    <!-- check for changes in every 10 secs when server starts   -->
-                    <scanIntervalSeconds>10</scanIntervalSeconds> 
-                     
-                    <!-- mvn jetty:run-war -->
-                    <war>${project.basedir}/target/app.war</war>
-                    
-                    <!-- Need to do more research on https and port config -->
-                    <jettyXml></jettyXml>
-                </configuration>
-      </plugin>
-    </plugins>
-    </pluginManagement>
-    <finalName>app</finalName>
-  </build>
+
+		<!-- Apache libs -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>3.0.7</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 
+			Apache Commons Object Pooling Library -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email 
+			Apache Commons Email aims to provide an API for sending email. It is built 
+			on top of the JavaMail API, which it aims to simplify. -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- End of Apache libs -->
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind 
+			Java object to json serialization -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+
+		<!-- Servlet Resolve JSP errors -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core how to 
+			integrate this? -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java JDBC 
+			driver for mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version> <!-- don't use 6.0.2 and 6.0.3 use 5.1.39 instead -->
+			<scope>compile</scope> <!-- default scope or runtime scope will not work -->
+		</dependency>
+
+		<!-- Joda-Time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+
+		<!-- To map JodaTime with database type -->
+		<dependency>
+			<groupId>org.jadira.usertype</groupId>
+			<artifactId>usertype.core</artifactId>
+			<version>3.0.0.CR1</version>
+		</dependency>
+
+		<!-- Testing dependencies <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-test</artifactId> <version>${springframework.version}</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>org.testng</groupId> 
+			<artifactId>testng</artifactId> <version>${testng.version}</version> <scope>test</scope> 
+			</dependency> <dependency> <groupId>org.mockito</groupId> <artifactId>mockito-all</artifactId> 
+			<version>${mockito.version}</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>com.h2database</groupId> <artifactId>h2</artifactId> <version>${h2.version}</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>dbunit</groupId> 
+			<artifactId>dbunit</artifactId> <version>${dbunit.version}</version> <scope>test</scope> 
+			</dependency> -->
+
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.8</version>
+					<executions>
+						<execution>
+							<id>download-dependencies</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory> ${project.build.directory}/dependencies </outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-maven-plugin</artifactId>
+					<version>4.0.3</version>
+					<configuration>
+						<url>jdbc:mysql://localhost:3306</url>
+						<user>root</user>
+						<password>123456</password>
+						<basedir>db/migrations/words</basedir>
+						<schemas>
+							<schema>flyway_schema</schema>
+						</schemas>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>9.4.0.M1</version>
+					<configuration>
+						<!-- check for changes in every 10 secs when server starts -->
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+
+						<!-- mvn jetty:run-war -->
+						<war>${project.basedir}/target/app.war</war>
+
+						<!-- Need to do more research on https and port config -->
+						<jettyXml></jettyXml>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<finalName>app</finalName>
+	</build>
 </project>

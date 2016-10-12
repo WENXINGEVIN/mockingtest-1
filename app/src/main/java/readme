@@ -1,0 +1,36 @@
+Versions: check pom.xml for details.
+
+Existing problems of the websystique example, 
+Some different minor version of spring used in the following examples has inconsistency. 
+Thus, we will see some errors when we integrate different components.
+
+Resources are coming form the following URL:
+
+0/ http://websystique.com/springmvc/spring-4-mvc-and-hibernate4-integration-example-using-annotations/
+The above is done 
+
+1/ Tiles integration 
+http://websystique.com/springmvc/spring-4-mvc-apache-tiles-3-annotation-based-example/
+The above is done
+
+2/ Maven + Tomcat  (xin)
+http://www.mkyong.com/maven/how-to-deploy-maven-based-war-file-to-tomcat/
+TODO: just edit pom.xml to make sure after we do `mvn package` we can copy that war file to tomcat/webapps
+Done research, installed tomcat8 + tomcat plugin and it seems working fine. 
+
+3/ Fix employee add and edit...etc. (Xin)
+
+4/ Spring security (xiaofeng)
+http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/
+http://websystique.com/spring-security/spring-security-4-hibernate-annotation-example/
+http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
+
+5/ Oauth2 integration, Email integration
+
+6/ Javascript,
+TODO: javascript to pass json to java. This is important as I will need to get a javascript dialog box
+to collect user's interactive feedback and pass to java. Then the backend db will be designed to save these user's daily 
+study info and pattern. Next step is to based on these materials in the db to generate quiz for 
+
+7/ Javascript,
+TODO: research on the dialog box we customized and overlay stuff.

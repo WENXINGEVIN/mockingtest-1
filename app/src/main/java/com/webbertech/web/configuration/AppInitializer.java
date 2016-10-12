@@ -1,9 +1,12 @@
-package com.webbertech.web.security;
+package com.webbertech.web.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+ 
+/*Note that this file load AppConfig.class*/
 
-public class StringMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
-	@Override
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+ 
+    @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[] { AppConfig.class };
     }
@@ -17,4 +20,5 @@ public class StringMvcInitializer extends AbstractAnnotationConfigDispatcherServ
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
+ 
 }

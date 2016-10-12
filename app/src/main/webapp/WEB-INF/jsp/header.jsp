@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="index.html">Home</a> | 
-<a href="services.html">Services</a> |
-<a href="aboutus.html">About us</a> |  
-<a href="contactus.html">Contact</a>
+<a href="index">Home</a> | 
+<a href="services">Services</a> |
+<a href="aboutus">About us</a> |  
+<a href="contactus">Contact</a>
 </body>
 </html>
