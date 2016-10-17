@@ -31,14 +31,16 @@ On the view layer, user will see only the content he/she is allowed to based on 
 thanks to Spring Security tags for view layer.
 
 requirement:
-
 Spring 4.2.5.RELEASE
 Spring Security 4.0.4.RELEASE
 Hibernate Core 4.3.11.Final
 validation-api 1.1.0.Final
 hibernate-validator 5.1.3.Final
 
+(done, libraries are compatible)
+
 http://websystique.com/spring-security/spring-security-4-hibernate-annotation-example/ （done）
+
 http://websystique.com/spring-security/secure-spring-rest-api-using-basic-authentication/
 
 5/ Oauth2 integration, Email integration
@@ -50,3 +52,7 @@ study info and pattern. Next step is to based on these materials in the db to ge
 
 7/ Javascript,
 TODO: research on the dialog box we customized and overlay stuff.
+
+8/ website,
+css should be as simple as possible
+https://www.stackpath.com/pricing/?utm_source=maxcdn&utm_campaign=max_redirect&utm_medium=home

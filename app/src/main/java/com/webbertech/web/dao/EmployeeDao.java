@@ -1,4 +1,4 @@
-package com.webbertech.web.employee.dao;
+package com.webbertech.web.dao;
 
 import com.webbertech.web.model.Employee;
 import java.util.List;

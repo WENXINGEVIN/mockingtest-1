@@ -1,22 +1,14 @@
-package com.webbertech.web.employee.dao;
+package com.webbertech.web.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
- 
 import java.io.Serializable;
- 
 import java.lang.reflect.ParameterizedType;
- 
 import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
  
-public abstract class AbstractDao<PK extends Serializable, T> {
-     
+public abstract class AbstractDao<PK extends Serializable, T> { 
     private final Class<T> persistentClass;
-     
     @SuppressWarnings("unchecked")
     public AbstractDao(){
         this.persistentClass =(Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
@@ -45,5 +37,4 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     protected Criteria createEntityCriteria(){
         return getSession().createCriteria(persistentClass);
     }
- 
 }

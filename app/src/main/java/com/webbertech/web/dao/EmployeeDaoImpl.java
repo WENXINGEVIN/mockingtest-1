@@ -1,4 +1,4 @@
-package com.webbertech.web.employee.dao;
+package com.webbertech.web.dao;
 
 import java.util.List;
 import org.hibernate.Criteria;
