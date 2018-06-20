@@ -14,10 +14,6 @@ public class RunCode {
             Process p = Runtime.getRuntime().exec("ls");
             PrintWriter writer = new PrintWriter("log.txt");
             
-            
-            
-            
-            
             BufferedReader stdInput = new BufferedReader(new 
                  InputStreamReader(p.getInputStream()));
             
