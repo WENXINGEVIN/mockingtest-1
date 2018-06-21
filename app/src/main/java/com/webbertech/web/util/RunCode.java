@@ -12,15 +12,15 @@ public class RunCode {
         try {
 
             // reconstruct source code to ".java" file
-            File newTextFile = new File("HelloWorld.java");
-            FileWriter fileWriter = new FileWriter(newTextFile);
-            fileWriter.write(sourceCode.code);
+            File javaFile = new File(sourceCode.getTitle() + ".java");
+            FileWriter fileWriter = new FileWriter(javaFile);
+            fileWriter.write(sourceCode.getCode());
             fileWriter.close();
 
             // using the Runtime exec method to run :
             Runtime runtime = Runtime.getRuntime();
-            Process compile = runtime.exec("javac HelloWorld.java");
-            Process run = runtime.exec("java HelloWorld");
+            Process compile = runtime.exec("javac " + javaFile.getName());
+            Process run = runtime.exec("java " + sourceCode.getTitle());
 
             PrintWriter printWriter = new PrintWriter("log.txt");
 
@@ -50,7 +50,12 @@ public class RunCode {
             System.exit(0);
         }
         catch (IOException e) {
-            System.out.println("exception happened - here's what I know: ");
+            System.out.println("IOException happened - here's what I know: ");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        catch (Exception e) {
+            System.out.println("Exception happened - here's what I know: ");
             e.printStackTrace();
             System.exit(-1);
         }
@@ -69,8 +74,9 @@ public class RunCode {
 		// Test above code here.
         SourceCode sourceCode = null;
         try {
-            String codeInString = readFileAsString("/Users/VINCENTWEN/local_workspace/mockingtest-1/app/helloworld.txt");
-            sourceCode = new SourceCode("HelloWorld", codeInString);
+            String fileName = "/Users/VINCENTWEN/local_workspace/mockingtest-1/app/HelloWorld.txt";
+            String codeInString = readFileAsString(fileName);
+            sourceCode = new SourceCode(Paths.get(fileName).getFileName().toString().replaceFirst("[.][^.]+$", ""), codeInString);
             executeCode(sourceCode);
         } catch (Exception e) {
             e.printStackTrace();

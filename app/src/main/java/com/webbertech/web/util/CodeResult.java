@@ -1,8 +1,8 @@
 package com.webbertech.web.util;
 
 public class CodeResult {
-	String stdout;
-	String exception;
+	private String stdout;
+	private String exception;
 	
 	public CodeResult() {}
 	

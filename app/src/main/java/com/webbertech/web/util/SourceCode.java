@@ -1,10 +1,8 @@
 package com.webbertech.web.util;
 
-import java.io.File;
-
 public class SourceCode {
-	String title;
-	String code;
+	private String title;
+	private String code;
 
 	public SourceCode(String title, String code) {
 		super();
