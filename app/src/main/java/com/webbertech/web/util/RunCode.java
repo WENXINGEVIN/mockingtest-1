@@ -1,61 +1,57 @@
+package com.webbertech.web.util;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class RunCode {
-	static Result executeCode(SourceCode code)  {
-		
+	static CodeResult executeCode(SourceCode sourceCode)  {
 
 		String s = null;
 		
-		
         try {
-            
-	    // run the Unix "ps -ef" command
+
+            // reconstruct source code to ".java" file
+            File newTextFile = new File("HelloWorld.java");
+            FileWriter fileWriter = new FileWriter(newTextFile);
+            fileWriter.write(sourceCode.code);
+            fileWriter.close();
+
             // using the Runtime exec method to run :
-            Process p = Runtime.getRuntime().exec("ls");
-            PrintWriter writer = new PrintWriter("log.txt");
-            
-            BufferedReader stdInput = new BufferedReader(new 
-                 InputStreamReader(p.getInputStream()));
-            
+            Runtime runtime = Runtime.getRuntime();
+            Process compile = runtime.exec("javac HelloWorld.java");
+            Process run = runtime.exec("java HelloWorld");
+
+            PrintWriter printWriter = new PrintWriter("log.txt");
+
+            BufferedReader stdInput = new BufferedReader(new
+                 InputStreamReader(run.getInputStream()));
+
             BufferedReader stdError = new BufferedReader(new 
-                 InputStreamReader(p.getErrorStream()));
+                 InputStreamReader(run.getErrorStream()));
 
             // read the output from the command
             System.out.println("Here is the standard output of the command:\n");
-            writer.println("Here is the standard output of the command:\n");
+            printWriter.println("Here is the standard output of the command:\n");
             while ((s = stdInput.readLine()) != null) {
                 System.out.println(s);
-                
-                writer.println(s);
+                printWriter.println(s);
             }
             
             // read any errors from the attempted command
             System.out.println("Here is the standard error of the command (if any):\n");
-            writer.println("Here is the standard error of the command (if any):\n");
+            printWriter.println("Here is the standard error of the command (if any):\n");
             while ((s = stdError.readLine()) != null) {
                 System.out.println(s);
-                writer.println(s);
+                printWriter.println(s);
             }
-            writer.close();
+
+            printWriter.close();
             System.exit(0);
-            
-            
         }
         catch (IOException e) {
             System.out.println("exception happened - here's what I know: ");
-            try {
-				PrintWriter writer = new PrintWriter("log.txt");
-				String hello = e.toString();
-				writer.println(hello);
-				writer.close();
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
             e.printStackTrace();
-            
-           
-            
             System.exit(-1);
         }
         
@@ -63,10 +59,22 @@ public class RunCode {
         
 	}
 
+    public static String readFileAsString(String fileName) throws Exception {
+        String data = "";
+        data = new String(Files.readAllBytes(Paths.get(fileName)));
+        return data;
+    }
+
 	public static void main(String[] args) throws FileNotFoundException {
 		// Test above code here.
-		SourceCode hello=null;
-		executeCode(hello);
+        SourceCode sourceCode = null;
+        try {
+            String codeInString = readFileAsString("/Users/VINCENTWEN/local_workspace/mockingtest-1/app/helloworld.txt");
+            sourceCode = new SourceCode("HelloWorld", codeInString);
+            executeCode(sourceCode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 
 }
